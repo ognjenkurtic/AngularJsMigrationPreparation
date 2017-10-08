@@ -15,7 +15,7 @@ const component = {
   template: require(`./app.html`),
   $routeConfig: [
     {
-      path: "/options",
+      path: "/options/...",
       name: "Options",
       component: "options",
       useAsDefault: true
@@ -24,6 +24,6 @@ const component = {
 };
 
 export const AppModule = angular
-  .module(`app`, [...thirdParty, ...modules.map(m => m.name)])
+  .module("app", [...thirdParty, ...modules.map(m => m.name)])
   .value("$routerRootComponent", "app")
   .component("app", component);

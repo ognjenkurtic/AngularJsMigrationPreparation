@@ -1,13 +1,22 @@
 import * as angular from "angular";
+import { UserOptionsModule } from "./userOptions/userOptions";
 
-const modules = [];
+const modules = [UserOptionsModule];
 
 export class OptionsController {}
 
 const component = {
   bindings: {},
   controller: OptionsController,
-  template: require("./options.html")
+  template: require("./options.html"),
+  $routeConfig: [
+    {
+      path: "/userOptions",
+      name: "UserOptions",
+      component: "userOptions",
+      useAsDefault: true
+    }
+  ]
 };
 
 export const OptionsModule = angular
