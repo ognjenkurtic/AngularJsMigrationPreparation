@@ -1,27 +1,29 @@
 require("@angular/router/angular1/angular_1_router");
 import angular from "angular";
 
+import { OptionsModule } from "./options/options";
+
 import "../style/app.css";
 
-let app = () => {
-  return {
-    template: require("./app.html"),
-    controller: "AppCtrl",
-    controllerAs: "app"
-  };
+const modules = [OptionsModule];
+const thirdParty = ["ngComponentRouter"];
+
+export class AppController {}
+
+const component = {
+  controller: AppController,
+  template: require(`./app.html`),
+  $routeConfig: [
+    {
+      path: "/options",
+      name: "Options",
+      component: "options",
+      useAsDefault: true
+    }
+  ]
 };
 
-class AppCtrl {
-  constructor() {
-    this.url = "https://github.com/preboot/angular-webpack";
-  }
-}
-
-const MODULE_NAME = "app";
-
-angular
-  .module(MODULE_NAME, ["ngComponentRouter"])
-  .directive("app", app)
-  .controller("AppCtrl", AppCtrl);
-
-export default MODULE_NAME;
+export const AppModule = angular
+  .module(`app`, [...thirdParty, ...modules.map(m => m.name)])
+  .value("$routerRootComponent", "app")
+  .component("app", component);
