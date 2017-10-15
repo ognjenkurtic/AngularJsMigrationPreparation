@@ -2,10 +2,11 @@ require("@angular/router/angular1/angular_1_router");
 import angular from "angular";
 
 import { DriversModule } from "./drivers/drivers";
+import { CarsModule } from "./cars/cars";
 
 import "../style/app.css";
 
-const modules = [DriversModule];
+const modules = [DriversModule, CarsModule];
 const thirdParty = ["ngComponentRouter"];
 
 export class AppController {}
@@ -19,6 +20,11 @@ const component = {
       name: "Drivers",
       component: "drivers",
       useAsDefault: true
+    },
+    {
+      path: "/cars/...",
+      name: "Cars",
+      component: "cars"
     }
   ]
 };
