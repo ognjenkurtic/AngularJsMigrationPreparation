@@ -1,11 +1,11 @@
 require("@angular/router/angular1/angular_1_router");
 import angular from "angular";
 
-import { OptionsModule } from "./options/options";
+import { DriversModule } from "./drivers/drivers";
 
 import "../style/app.css";
 
-const modules = [OptionsModule];
+const modules = [DriversModule];
 const thirdParty = ["ngComponentRouter"];
 
 export class AppController {}
@@ -15,9 +15,9 @@ const component = {
   template: require(`./app.html`),
   $routeConfig: [
     {
-      path: "/options/...",
-      name: "Options",
-      component: "options",
+      path: "/drivers/...",
+      name: "Drivers",
+      component: "drivers",
       useAsDefault: true
     }
   ]
